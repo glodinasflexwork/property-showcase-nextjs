@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,7 +39,7 @@ export default function MobileMenu() {
     <div className="md:hidden">
       <button 
         onClick={() => setIsOpen(!isOpen)} 
-        className="text-white focus:outline-none"
+        className="text-white bg-purple-600/40 hover:bg-purple-600/60 p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
@@ -58,42 +59,49 @@ export default function MobileMenu() {
           <div className="flex flex-col items-center justify-center h-full">
             <div className="mb-12">
               <Link href="/" onClick={() => setIsOpen(false)}>
-                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-16 w-auto" />
+                <Image 
+                  src="/glodinas_logo_redesigned_transparent.png" 
+                  alt="Glodinas Makelaardij" 
+                  width={180} 
+                  height={60} 
+                  className="h-16 w-auto object-contain" 
+                  priority 
+                />
               </Link>
             </div>
             <nav className="flex flex-col items-center space-y-8">
               <Link 
                 href="/" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/about" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                 onClick={() => setIsOpen(false)}
               >
                 About
               </Link>
               <Link 
                 href="/contact" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
               </Link>
-              <div className="pt-8 border-t border-white/20 w-48 flex flex-col items-center space-y-6">
+              <div className="pt-8 border-t border-white/20 w-64 flex flex-col items-center space-y-4 mt-6">
                 <Link 
                   href="/terms" 
-                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  className="text-lg text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                   onClick={() => setIsOpen(false)}
                 >
                   Terms & Conditions
                 </Link>
                 <Link 
                   href="/privacy" 
-                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  className="text-lg text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                   onClick={() => setIsOpen(false)}
                 >
                   Privacy Statement

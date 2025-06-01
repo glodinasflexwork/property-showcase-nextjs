@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Property {
   id: number
@@ -164,7 +166,14 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-12 w-auto max-w-[180px]" />
+              <Image 
+                src="/glodinas_logo_redesigned_transparent.png" 
+                alt="Glodinas Makelaardij" 
+                width={180} 
+                height={60} 
+                className="h-12 w-auto object-contain" 
+                priority 
+              />
             </Link>
             <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-white hover:text-purple-300 transition-colors">
@@ -182,7 +191,7 @@ export default function HomePage() {
             <div className="md:hidden">
               <button 
                 onClick={() => setMobileMenuOpen(true)} 
-                className="text-white focus:outline-none"
+                className="text-white bg-purple-600/40 hover:bg-purple-600/60 p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
                 aria-label="Open menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,11 +205,11 @@ export default function HomePage() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 bg-gradient-to-br from-purple-900/95 via-purple-800/95 to-pink-600/95 backdrop-blur-md">
           <div className="flex flex-col items-center justify-center h-full">
             <button 
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute top-6 right-6 text-white"
+              className="absolute top-6 right-6 text-white bg-purple-600/40 hover:bg-purple-600/60 p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
               aria-label="Close menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,42 +218,49 @@ export default function HomePage() {
             </button>
             <div className="mb-12">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-16 w-auto" />
+                <Image 
+                  src="/glodinas_logo_redesigned_transparent.png" 
+                  alt="Glodinas Makelaardij" 
+                  width={180} 
+                  height={60} 
+                  className="h-16 w-auto object-contain" 
+                  priority 
+                />
               </Link>
             </div>
-            <nav className="flex flex-col items-center space-y-8">
+            <nav className="flex flex-col items-center space-y-6">
               <Link 
                 href="/" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/about" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link 
                 href="/contact" 
-                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                className="text-2xl text-white hover:text-purple-300 transition-colors px-6 py-2 rounded-lg hover:bg-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
               </Link>
-              <div className="pt-8 border-t border-white/20 w-48 flex flex-col items-center space-y-6">
+              <div className="pt-8 border-t border-white/20 w-64 flex flex-col items-center space-y-4 mt-6">
                 <Link 
                   href="/terms" 
-                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  className="text-lg text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Terms & Conditions
                 </Link>
                 <Link 
                   href="/privacy" 
-                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  className="text-lg text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Privacy Statement
@@ -260,7 +276,14 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <div className="w-64 h-auto mx-auto mb-8 flex items-center justify-center">
-              <img src="/glodinas_logo_transparent.png" alt="Glodinas Makelaardij" className="w-full h-auto" />
+              <Image 
+                src="/glodinas_logo_redesigned_transparent.png" 
+                alt="Glodinas Makelaardij" 
+                width={256} 
+                height={180} 
+                className="w-full h-auto object-contain" 
+                priority
+              />
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -298,9 +321,11 @@ export default function HomePage() {
                 className="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 border border-white/20"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={property.images[0]}
                     alt={property.title}
+                    width={500}
+                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                   <div className="absolute top-4 left-4">

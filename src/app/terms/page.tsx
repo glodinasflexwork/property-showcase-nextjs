@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function TermsPage() {
   return (
@@ -10,7 +11,7 @@ export default function TermsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center">
-              <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-10 w-auto" />
+              <Image src="/glodinas_logo_vector.png" alt="Glodinas Makelaardij" width={150} height={50} className="h-10 w-auto" priority />
             </Link>
             <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-white hover:text-pink-300 transition-colors">
@@ -95,7 +96,7 @@ export default function TermsPage() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <Link href="/" className="flex items-center">
-                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-8 w-auto" />
+                <Image src="/glodinas_logo_vector.png" alt="Glodinas Makelaardij" width={120} height={40} className="h-8 w-auto" />
               </Link>
               <p className="text-white/60 mt-2 text-sm">
                 Premium real estate services in Den Haag

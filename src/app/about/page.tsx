@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState('experience')
@@ -74,7 +75,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center">
-              <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-10 w-auto" />
+              <Image src="/glodinas_logo_vector.png" alt="Glodinas Makelaardij" width={150} height={50} className="h-10 w-auto" priority />
             </Link>
             <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-white hover:text-pink-300 transition-colors">
@@ -131,7 +132,13 @@ export default function AboutPage() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                 <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden">
-                  <img src="/cihat_avatar.jpg" alt="Cihat Kaya" className="w-full h-full object-cover" />
+                  <Image 
+                    src="/cihat_avatar.jpg" 
+                    alt="Cihat Kaya" 
+                    width={192} 
+                    height={192} 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-white mb-2">Cihat Kaya</h3>
