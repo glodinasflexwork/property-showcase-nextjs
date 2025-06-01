@@ -53,7 +53,7 @@ export default function PrivacyPage() {
               
               <h2 className="text-2xl font-semibold text-white">3. How We Use Your Information</h2>
               <p className="leading-relaxed">
-                We use the information we collect to provide and improve our services, respond to your inquiries, send you property updates and newsletters (if you've opted in), and communicate with you about our services. We may also use your information to personalize your experience on our website and to analyze how our website is being used to make improvements.
+                We use the information we collect to provide and improve our services, respond to your inquiries, send you property updates and newsletters (if you&apos;ve opted in), and communicate with you about our services. We may also use your information to personalize your experience on our website and to analyze how our website is being used to make improvements.
               </p>
               
               <h2 className="text-2xl font-semibold text-white">4. Information Sharing</h2>
