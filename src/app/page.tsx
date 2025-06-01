@@ -21,6 +21,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const properties: Property[] = [
     {
@@ -100,6 +101,19 @@ export default function HomePage() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [mobileMenuOpen])
+
   const openGallery = (property: Property) => {
     setSelectedProperty(property)
     setCurrentImageIndex(0)
@@ -149,10 +163,10 @@ export default function HomePage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-white">
-              Cihat Kaya Real Estate
+            <Link href="/" className="flex items-center">
+              <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-12 w-auto max-w-[180px]" />
             </Link>
-            <div className="flex space-x-8">
+            <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-white hover:text-purple-300 transition-colors">
                 Home
               </Link>
@@ -163,15 +177,91 @@ export default function HomePage() {
                 Contact
               </Link>
             </div>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setMobileMenuOpen(true)} 
+                className="text-white focus:outline-none"
+                aria-label="Open menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md">
+          <div className="flex flex-col items-center justify-center h-full">
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute top-6 right-6 text-white"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="mb-12">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-16 w-auto" />
+              </Link>
+            </div>
+            <nav className="flex flex-col items-center space-y-8">
+              <Link 
+                href="/" 
+                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-2xl text-white hover:text-purple-300 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <div className="pt-8 border-t border-white/20 w-48 flex flex-col items-center space-y-6">
+                <Link 
+                  href="/terms" 
+                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Terms & Conditions
+                </Link>
+                <Link 
+                  href="/privacy" 
+                  className="text-lg text-white/80 hover:text-white transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Privacy Statement
+                </Link>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
-            <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-8 animate-pulse"></div>
+            <div className="w-64 h-auto mx-auto mb-8 flex items-center justify-center">
+              <img src="/glodinas_logo_transparent.png" alt="Glodinas Makelaardij" className="w-full h-auto" />
+            </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Premium
@@ -363,7 +453,36 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="bg-black/30 backdrop-blur-md border-t border-white/10 py-8 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <Link href="/" className="flex items-center">
+                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-8 w-auto" />
+              </Link>
+              <p className="text-white/60 mt-2 text-sm">
+                Premium real estate services in Den Haag
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+              <Link href="/terms" className="text-white/80 hover:text-white transition-colors">
+                Terms & Conditions
+              </Link>
+              <Link href="/privacy" className="text-white/80 hover:text-white transition-colors">
+                Privacy Statement
+              </Link>
+              <Link href="/contact" className="text-white/80 hover:text-white transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/60 text-sm">
+            © {new Date().getFullYear()} Glodinas Makelaardij. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
-

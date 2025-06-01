@@ -73,8 +73,8 @@ export default function AboutPage() {
       <nav className="fixed top-0 w-full z-40 bg-black/20 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-white font-bold text-xl">
-              Cihat Kaya Real Estate
+            <Link href="/" className="flex items-center">
+              <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-white hover:text-pink-300 transition-colors">
@@ -110,8 +110,8 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="text-xl text-white/80 mb-8 leading-relaxed">
-                Your trusted real estate expert in Den Haag, dedicated to helping you find the perfect property 
-                or achieve the best value for your investment.
+                Your trusted real estate expert at Glodinas Makelaardij, dedicated to helping you find the perfect property 
+                or achieve the best value for your investment in Den Haag and surrounding areas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -130,14 +130,14 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
-                <div className="w-48 h-48 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-6xl">👨‍💼</span>
+                <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden">
+                  <img src="/cihat_avatar.jpg" alt="Cihat Kaya" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-white mb-2">Cihat Kaya</h3>
-                  <p className="text-purple-200 mb-4">Licensed Real Estate Agent</p>
+                  <p className="text-purple-200 mb-4">Founder & Real Estate Expert</p>
                   <p className="text-white/70">
-                    Specializing in Den Haag properties with a focus on exceptional client service and market expertise.
+                    Founder of Glodinas Makelaardij, specializing in premium properties throughout Den Haag with a focus on exceptional client service and market expertise.
                   </p>
                 </div>
               </div>
