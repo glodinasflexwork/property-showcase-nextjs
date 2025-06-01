@@ -20,8 +20,6 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   const properties: Property[] = [
     {
       id: 1,
@@ -99,19 +97,6 @@ export default function HomePage() {
     const timer = setTimeout(() => setLoading(false), 2000)
     return () => clearTimeout(timer)
   }, [])
-
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
-    
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [mobileMenuOpen])
 
   const openGallery = (property: Property) => {
     setSelectedProperty(property)
