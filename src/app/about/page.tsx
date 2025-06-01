@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Navigation from '../components/Navigation'
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState('experience')
@@ -70,36 +71,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-600">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
-              <Image src="/glodinas_logo_vector.png" alt="Glodinas Makelaardij" width={150} height={50} className="h-10 w-auto" priority />
-            </Link>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-white hover:text-pink-300 transition-colors">
-                Home
-              </Link>
-              <Link href="/about" className="text-pink-300 font-semibold">
-                About
-              </Link>
-              <Link href="/contact" className="text-white hover:text-pink-300 transition-colors">
-                Contact
-              </Link>
-            </div>
-            <div className="md:hidden">
-              <button className="text-white">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
+      <Navigation currentPage="about" />
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
