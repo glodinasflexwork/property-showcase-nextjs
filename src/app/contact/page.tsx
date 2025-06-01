@@ -29,21 +29,39 @@ export default function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        propertyType: '',
-        budget: '',
-        timeline: ''
-      })
-    }, 2000)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+          propertyType: '',
+          budget: '',
+          timeline: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        console.error('Form submission error:', result.error);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
   
   // Contact methods removed as unused
@@ -141,13 +159,17 @@ export default function ContactPage() {
           {/* Contact form */}
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
             <h2 className="text-2xl font-bold text-white mb-6">Send Me a Message</h2>
-            
-            {submitStatus === 'success' && (
+                      {submitStatus === 'success' && (
               <div className="bg-green-500/20 border border-green-500/30 rounded-xl p-4 mb-6">
-                <p className="text-white font-medium">Thank you for your message! I'll get back to you as soon as possible.</p>
+                <p className="text-white font-medium">Thank you for your message! I&apos;ll get back to you as soon as possible.</p>
               </div>
             )}
             
+            {submitStatus === 'error' && (
+              <div className="bg-red-500/20 border border-red-500/30 rounded-xl p-4 mb-6">
+                <p className="text-white font-medium">There was an error sending your message. Please try again or contact us directly.</p>
+              </div>
+            )}           
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
