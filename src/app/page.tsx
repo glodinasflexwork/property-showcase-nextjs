@@ -303,9 +303,11 @@ export default function HomePage() {
             </button>
             
             <div className="relative">
-              <img
+              <Image
                 src={selectedProperty.images[currentImageIndex]}
                 alt={`${selectedProperty.title} - Image ${currentImageIndex + 1}`}
+                width={1200}
+                height={800}
                 className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
               />
               
@@ -339,9 +341,11 @@ export default function HomePage() {
                       index === currentImageIndex ? 'border-purple-400' : 'border-white/30'
                     }`}
                   >
-                    <img
+                    <Image
                       src={image}
                       alt={`Thumbnail ${index + 1}`}
+                      width={64}
+                      height={64}
                       className="w-full h-full object-cover"
                     />
                   </button>
@@ -358,7 +362,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <Link href="/" className="flex items-center">
-                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-8 w-auto" />
+                <Image src="/glodinas_logo.png" alt="Glodinas Makelaardij" width={120} height={40} className="h-8 w-auto" />
               </Link>
               <p className="text-white/60 mt-2 text-sm">
                 Premium real estate services in Den Haag

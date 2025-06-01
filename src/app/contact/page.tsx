@@ -46,9 +46,7 @@ export default function ContactPage() {
     }, 2000)
   }
   
-  const contactMethods = [
-    // Contact methods data
-  ]
+  // Contact methods removed as unused
   
   const faqs = [
     {
@@ -81,7 +79,7 @@ export default function ContactPage() {
             <span className="block text-pink-300">Touch</span>
           </h1>
           <p className="text-white/80 text-center text-lg mb-12 max-w-2xl mx-auto">
-            Ready to start your real estate journey? I'm here to help you every step of the way. Contact me today for personalized service and expert guidance.
+            Ready to start your real estate journey? I&apos;m here to help you every step of the way. Contact me today for personalized service and expert guidance.
           </p>
           
           {/* Contact methods */}
@@ -361,7 +359,7 @@ export default function ContactPage() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <Link href="/" className="flex items-center">
-                <img src="/glodinas_logo.png" alt="Glodinas Makelaardij" className="h-8 w-auto" />
+                <Image src="/glodinas_logo.png" alt="Glodinas Makelaardij" width={120} height={40} className="h-8 w-auto" />
               </Link>
               <p className="text-white/60 mt-2 text-sm">
                 Premium real estate services in Den Haag
