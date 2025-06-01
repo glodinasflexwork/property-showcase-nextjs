@@ -1,10 +1,8 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from './components/Navigation'
-
 interface Property {
   id: number
   title: string
@@ -18,11 +16,11 @@ interface Property {
   rating: number
   images: string[]
 }
-
 export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const properties: Property[] = [
     {
