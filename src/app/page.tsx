@@ -152,7 +152,13 @@ export default function HomePage() {
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin mx-auto mb-8"></div>
           <h1 className="text-4xl font-bold text-white mb-4">Loading Premium Properties...</h1>
-          <p className="text-white/70 text-lg">Preparing your exclusiv  return (
+          <p className="text-white/70 text-lg">Preparing your exclusive collection</p>
+        </div>
+      </div>
+    );
+  }
+  
+  return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800">
       <Navigation currentPage="home" />
       {/* Hero Section */}
